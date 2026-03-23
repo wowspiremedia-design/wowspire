@@ -1,0 +1,192 @@
+/* ============================================================
+   WOWSPIRE — LOADER V6 — Netflix-Grade Brand Film
+   2.8 seconds. Pure CSS animations. Zero JS dependency for visuals.
+   ============================================================ */
+
+#loader {
+  position: fixed; inset: 0; background: #000000;
+  z-index: 100000; display: flex; align-items: center;
+  justify-content: center; overflow: hidden;
+}
+#loader.done { display: none; }
+
+#ldCanvas {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%; z-index: 1;
+}
+
+/* ── CENTER STACK ───────────────────────────────────────── */
+.ld-center {
+  position: relative; z-index: 2; text-align: center;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 0;
+}
+
+/* ── PHASE 1: DOT — 0.0s to 0.45s ─────────────────────── */
+.ld-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: #FF4D94;
+  box-shadow: 0 0 0 0 rgba(255,77,148,0);
+  opacity: 0;
+  animation: dotLife 0.55s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  animation-delay: 0.05s;
+  position: absolute;
+  z-index: 5;
+}
+@keyframes dotLife {
+  0%   { opacity:0; transform:scale(0); box-shadow:0 0 0 0 rgba(255,77,148,0); }
+  35%  { opacity:1; transform:scale(1.4); box-shadow:0 0 25px 8px rgba(255,77,148,.7); }
+  70%  { opacity:1; transform:scale(2.2); box-shadow:0 0 40px 20px rgba(255,77,148,.4); }
+  100% { opacity:0; transform:scale(3.5); box-shadow:0 0 0 0 rgba(255,77,148,0); }
+}
+
+/* ── PHASE 2: LOGO — 0.5s ──────────────────────────────── */
+.ld-logo {
+  position: relative; width: 120px; height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0;
+  animation: logoArrive 0.65s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  animation-delay: 0.55s;
+  will-change: transform, opacity;
+}
+@keyframes logoArrive {
+  0%   { opacity:0; transform:scale(0.05) rotate(-25deg); }
+  60%  { opacity:1; transform:scale(1.15) rotate(4deg); }
+  80%  { transform:scale(0.94) rotate(-1deg); }
+  100% { opacity:1; transform:scale(1) rotate(0deg); }
+}
+.ld-logo img {
+  width:100%; height:100%; border-radius:50%;
+  position:relative; z-index:3;
+  animation: logoPulse 0.45s ease forwards;
+  animation-delay: 1.55s;
+}
+@keyframes logoPulse {
+  0%  { transform: scale(1); }
+  45% { transform: scale(1.28); filter: brightness(1.4); }
+  100%{ transform: scale(1); filter: brightness(1); }
+}
+.ld-glow {
+  position:absolute; inset:-20px; border-radius:50%;
+  background:radial-gradient(circle,rgba(255,77,148,.6),transparent 70%);
+  opacity:0;
+  animation: glowIn .4s ease forwards, glowBreath 2s ease-in-out infinite;
+  animation-delay: 0.55s, 1s;
+}
+@keyframes glowIn  { to { opacity:1; } }
+@keyframes glowBreath {
+  0%,100%{ transform:scale(1); opacity:.7; }
+  50%    { transform:scale(1.3); opacity:1; }
+}
+.ld-ring {
+  position:absolute; inset:-16px; border-radius:50%;
+  border:1.5px solid rgba(255,77,148,.65);
+  opacity:0;
+  animation: ringIn .3s ease forwards, spin 2.5s linear infinite;
+  animation-delay: 0.7s;
+}
+.ld-ring::before {
+  content:''; position:absolute; top:-3px; left:50%;
+  width:7px; height:7px; background:#FF4D94; border-radius:50%;
+  transform:translateX(-50%); box-shadow:0 0 10px #FF4D94, 0 0 20px rgba(255,77,148,.6);
+}
+.ld-ring2 {
+  position:absolute; inset:-28px; border-radius:50%;
+  border:1px solid rgba(255,77,148,.22);
+  opacity:0;
+  animation: ringIn .3s ease forwards, spin 4s linear infinite reverse;
+  animation-delay: 0.8s;
+}
+.ld-ring2::before {
+  content:''; position:absolute; top:-2px; left:50%;
+  width:4px; height:4px; background:rgba(255,77,148,.75); border-radius:50%;
+  transform:translateX(-50%);
+}
+@keyframes ringIn { to { opacity:1; } }
+@keyframes spin   { to { transform:rotate(360deg); } }
+
+/* ── PHASE 3: LETTERS — 0.95s staggered ────────────────── */
+.ld-name {
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:700;
+  font-size: clamp(30px, 5.5vw, 42px);
+  letter-spacing:12px; text-transform:uppercase;
+  margin-top:26px; color:#fff;
+  text-shadow:0 0 40px rgba(255,77,148,.5);
+  display:flex; gap:1px; justify-content:center;
+  opacity:1;
+}
+/* Each letter: unique from-direction */
+.ld-name .ltr {
+  display:inline-block; opacity:0;
+  animation: letterIn .4s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+.ld-name .ltr:nth-child(1){ animation-delay:0.95s; --tx:-100px; --ty:0px;   --tr:-15deg; }
+.ld-name .ltr:nth-child(2){ animation-delay:1.02s; --tx:0px;   --ty:-90px;  --tr:0deg;   }
+.ld-name .ltr:nth-child(3){ animation-delay:1.09s; --tx:100px;  --ty:0px;   --tr:15deg;  }
+.ld-name .ltr:nth-child(4){ animation-delay:1.16s; --tx:0px;   --ty:90px;   --tr:0deg;   }
+.ld-name .ltr:nth-child(5){ animation-delay:1.23s; --tx:-80px;  --ty:-80px; --tr:-20deg; }
+.ld-name .ltr:nth-child(6){ animation-delay:1.30s; --tx:0px;   --ty:0px;    --tr:0deg; transform-origin:center; animation-name:letterInScale; }
+.ld-name .ltr:nth-child(7){ animation-delay:1.37s; --tx:80px;   --ty:-80px; --tr:20deg;  }
+.ld-name .ltr:nth-child(8){ animation-delay:1.44s; --tx:80px;   --ty:80px;  --tr:15deg;  }
+@keyframes letterIn {
+  0%  { opacity:0; transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(0.4); }
+  65% { opacity:1; transform:translate(0,0) rotate(0deg) scale(1.15); }
+  100%{ opacity:1; transform:translate(0,0) rotate(0deg) scale(1); }
+}
+@keyframes letterInScale {
+  0%  { opacity:0; transform:scale(0.05); }
+  65% { opacity:1; transform:scale(1.3); }
+  100%{ opacity:1; transform:scale(1); }
+}
+
+/* ── PHASE 4: TAGLINE + LINE — 1.7s ────────────────────── */
+.ld-tagline {
+  font-family:'DM Sans',sans-serif; font-size:12px;
+  color:#FF4D94; letter-spacing:6px; text-transform:uppercase;
+  margin-top:14px; opacity:0;
+  animation: fadeSlideUp .5s ease forwards;
+  animation-delay: 1.75s;
+}
+.ld-line {
+  height:1.5px; width:0; margin-top:14px;
+  background:linear-gradient(90deg,transparent,#FF4D94,transparent);
+  box-shadow:0 0 10px #FF4D94, 0 0 25px rgba(255,77,148,.4);
+  animation:lineGrow .65s cubic-bezier(0.87,0,.13,1) forwards;
+  animation-delay:1.9s;
+}
+@keyframes fadeSlideUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+@keyframes lineGrow { to{ width:220px; } }
+
+/* ── PHASE 5: HOLD 2.0s–2.6s — breathing glow fills screen */
+/* Pure breathing — the "Netflix hold" moment */
+
+/* ── PHASE 6: SPLIT — 2.7s ─────────────────────────────── */
+.ld-top, .ld-bot {
+  position:absolute; left:0; width:100%; height:50%;
+  background:#000; z-index:3;
+  will-change: transform;
+}
+.ld-top { top:0; }
+.ld-bot { bottom:0; }
+.ld-top.go { animation:panelTop .75s cubic-bezier(0.76,0,0.24,1) forwards; }
+.ld-bot.go { animation:panelBot .75s cubic-bezier(0.76,0,0.24,1) forwards; }
+@keyframes panelTop { to{ transform:translateY(-100%); } }
+@keyframes panelBot { to{ transform:translateY(100%); } }
+
+/* ── FLASH ──────────────────────────────────────────────── */
+.ld-flash {
+  position:absolute; top:50%; left:0; width:100%;
+  height:0; z-index:4; display:none;
+  background:#FF4D94; transform:translateY(-50%);
+}
+.ld-flash.go {
+  display:block; height:6px;
+  box-shadow:0 0 50px #FF4D94,0 0 130px rgba(255,77,148,.7),0 0 260px rgba(255,77,148,.3);
+  animation:flashBurst .35s ease forwards;
+}
+@keyframes flashBurst {
+  0%  { opacity:1; height:6px; }
+  50% { opacity:1; height:8px; }
+  100%{ opacity:0; height:2px; }
+}

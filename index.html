@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Wowspire Media | Social Media, Branding &amp; Lead Generation</title>
+  <meta name="description" content="Wowspire Media — bold digital marketing agency in Kolkata. Social media, brand building, lead generation, Meta ads, SEO, marketing automation. 13+ years. 30+ brands. 50,000+ leads.">
+  <meta property="og:title" content="Wowspire Media | Social Media, Branding &amp; Lead Generation">
+  <meta property="og:description" content="Every business is unique. Your marketing should be too.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/wowspire-logo.png">
+  <link rel="icon" type="image/png" href="assets/images/wowspire-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/loader.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mobile.css">
+
+<script>
+// ── RELOAD BLACK SCREEN FIX ──────────────────────────────
+// If page is loaded from cache (bfcache), force a fresh start
+window.addEventListener('pageshow', function(e) {
+  if (e.persisted) { window.location.reload(); }
+});
+// Safety: remove loader if it's still showing after 6s
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    var l = document.getElementById('loader');
+    if (l && !l.classList.contains('done')) {
+      l.classList.add('done');
+      document.body.style.overflow = '';
+      document.body.classList.remove('loading');
+    }
+  }, 6000);
+});
+</script>
+</head>
+<body class="loading">
+
+<!-- SCROLL PROGRESS -->
+<div id="scrollBar"></div>
+
+<!-- LOADER — WOWSPIRE GENESIS BRAND FILM -->
+<div id="loader">
+  <canvas id="ldCanvas"></canvas>
+  <div class="ld-center">
+    <div class="ld-dot"></div>
+    <div class="ld-logo">
+      <div class="ld-glow"></div>
+      <div class="ld-ring"></div>
+      <div class="ld-ring2"></div>
+      <img src="assets/images/wowspire-logo.png" alt="Wowspire">
+    </div>
+    <div class="ld-name"><span class="ltr">W</span><span class="ltr">O</span><span class="ltr">W</span><span class="ltr">S</span><span class="ltr">P</span><span class="ltr">I</span><span class="ltr">R</span><span class="ltr">E</span></div>
+    <div class="ld-tagline">We Create, You Wow</div>
+    <div class="ld-line"></div>
+  </div>
+  <div class="ld-top"></div>
+  <div class="ld-bot"></div>
+  <div class="ld-flash"></div>
+</div>
+
+<!-- FIXED BACKGROUND LAYERS -->
+<canvas id="stars"></canvas>
+<canvas id="threeCanvas"></canvas>
+<div class="bg-orbs">
+  <div class="bg-orb bg-orb--1"></div>
+  <div class="bg-orb bg-orb--2"></div>
+  <div class="bg-orb bg-orb--3"></div>
+</div>
+<div class="cursor-glow"></div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#hero" class="nav-brand">
+    <img src="assets/images/wowspire-logo.png" alt="Wowspire">
+    <span>WOWSPIRE</span>
+  </a>
+  <div class="nav-links">
+    <a href="#hero" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#learn">Learn &amp; Grow</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get Started</a>
+  <button class="burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <a href="#hero">Home</a>
+  <a href="#about">About</a>
+  <a href="#services">Services</a>
+  <a href="#portfolio">Portfolio</a>
+  <a href="#learn">Learn &amp; Grow</a>
+  <a href="#contact">Contact</a>
+  <a href="#contact" class="nav-cta mob-cta">Get Started</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-in">
+    <div class="hero-logo">
+      <img src="assets/images/wowspire-logo.png" alt="Wowspire">
+    </div>
+    <h1 class="hero-h1">
+      <span class="neon" id="typedText"></span><span class="hero-cursor"></span>
+    </h1>
+    <p class="hero-p">Every Business Is Unique. Your Marketing Should Be Too.</p>
+    <a href="#contact" class="hero-cta">Get Started &rarr;</a>
+    <div class="hero-quick">
+      <a href="https://wa.me/918013838854" target="_blank" title="WhatsApp" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      </a>
+      <a href="mailto:wowspiremedia@gmail.com" title="Email">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      </a>
+      <a href="https://calendly.com/wowspiremedia/30min" target="_blank" title="Schedule" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint"><div class="s-arrow"></div></div>
+</section>
+
+<!-- MARQUEE -->
+<section id="marquee">
+  <p class="mq-label">Brands That Trust Us</p>
+  <div class="mq-wrap"><div class="mq-track" id="mqTrack"></div></div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="sh anim-sh">
+      <span class="sh-sub">About the Founder</span>
+      <h2 class="sh-title">The Man Behind the <span class="pw">Mission</span></h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-photo-box">
+        <div class="about-photo-frame"></div>
+        <div class="about-photo">
+          <img src="assets/images/rahul-photo.jpg" alt="Rahul Mukherjee" loading="lazy">
+        </div>
+      </div>
+      <div class="about-content">
+        <h3 class="about-name">Rahul Mukherjee</h3>
+        <p class="about-role">Founder, Wowspire Media</p>
+        <div class="about-bio" id="aboutBio"></div>
+        <div class="counters" id="countersGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="sh anim-sh">
+      <span class="sh-sub">Our Expertise</span>
+      <h2 class="sh-title">What We Bring to the <span class="pw">Table</span></h2>
+      <div class="sh-line"></div>
+    </div>
+    <div id="svcContainer"></div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="sh anim-sh">
+      <span class="sh-sub">Our Work</span>
+      <h2 class="sh-title">Brands We've <span class="pw">Transformed</span></h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="pf-grid" id="pfGrid"></div>
+  </div>
+</section>
+
+<!-- DISNEY -->
+<section id="disney">
+  <div class="wrap">
+    <div class="sh anim-sh">
+      <span class="sh-sub">A Milestone</span>
+      <h2 class="sh-title">From Kolkata to <span class="pw">Disney</span></h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="disney-vid">
+      <iframe src="https://www.youtube.com/embed/1QNzvokZ7VE?start=15" title="Disney Collaboration"
+        allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"
+        allowfullscreen loading="lazy"></iframe>
+    </div>
+    <div class="disney-text" id="disneyText"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="sh anim-sh">
+      <span class="sh-sub">Social Proof</span>
+      <h2 class="sh-title">What Our Clients <span class="pw">Say</span></h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="test-box">
+      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="test-quote">"Working with Wowspire is a very good experience to me. Wowspire not only deliver my work but also suggest me how to execute my work in a right way. Thanks to Rahul Mukherjee and keep the good work."</p>
+      <p class="test-name">— Shreya Mukherjee</p>
+      <p class="test-role">Founder &amp; CEO, Trip-O-India</p>
+    </div>
+  </div>
+</section>
+
+<!-- LEARN & GROW -->
+<section id="learn">
+  <div class="wrap">
+    <div class="sh anim-sh">
+      <span class="sh-sub">Free Resources</span>
+      <h2 class="sh-title">Learn the Game Before You <span class="pw">Play It</span></h2>
+      <div class="sh-line"></div>
+    </div>
+    <div id="learnContainer"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sh anim-sh">
+      <span class="sh-sub">Let's Connect</span>
+      <h2 class="sh-title">Ready to Grow? Let's <span class="pw">Talk.</span></h2>
+      <div class="sh-line"></div>
+    </div>
+    <div class="ct-btns">
+      <a href="https://calendly.com/wowspiremedia/30min" target="_blank" class="ct-btn" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+        Schedule a Meeting
+      </a>
+      <a href="https://wa.me/918013838854" target="_blank" class="ct-btn" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="mailto:wowspiremedia@gmail.com" class="ct-btn">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        Email Us
+      </a>
+    </div>
+    <form class="ct-form" action="https://formspree.io/f/xwpkvqjy" method="POST">
+      <div class="fg"><label>Your Name</label><input type="text" name="name" required placeholder="John Doe"></div>
+      <div class="fg"><label>Business Name</label><input type="text" name="business" required placeholder="Your Company"></div>
+      <div class="fg"><label>What do you need help with?</label><textarea name="message" required placeholder="Tell us about your project..."></textarea></div>
+      <div class="fg"><label>Phone / WhatsApp</label><input type="tel" name="phone" required placeholder="+91 98XXXXXXXX"></div>
+      <button type="submit">Send Inquiry</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <img src="assets/images/wowspire-logo.png" alt="Wowspire">
+      <h4>WOWSPIRE</h4>
+      <p>We Create, You Wow</p>
+    </div>
+    <div>
+      <h4 class="ft-h">Quick Links</h4>
+      <ul class="ft-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#learn">Learn &amp; Grow</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="ft-h">Connect</h4>
+      <ul class="ft-links">
+        <li><a href="https://www.facebook.com/wowspiremedia" target="_blank" rel="noopener">Facebook</a></li>
+        <li><a href="https://www.instagram.com/wowspiremedia/" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://www.linkedin.com/company/wowspire-media" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="ft-h">Get in Touch</h4>
+      <div class="ft-contact">
+        <p>Kolkata, West Bengal, India</p>
+        <p>+91 8013838854</p>
+        <p>wowspiremedia@gmail.com</p>
+      </div>
+    </div>
+  </div>
+  <div class="ft-bottom">&copy; 2017&ndash;2026 Wowspire Media. All Rights Reserved.</div>
+</footer>
+
+<!-- CHATBOT -->
+<button class="chat-trig" id="chatTrig" aria-label="Chat">
+  <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+</button>
+<div class="chat-win" id="chatWin">
+  <div class="chat-hd">
+    <span><span class="dot"></span>Wowspire AI</span>
+    <button id="chatX">&#x2715;</button>
+  </div>
+  <div class="chat-bd">
+    <div class="chat-m">Ready to grow your brand? Let's talk. Tell me about your business and I'll show you how Wowspire can help.</div>
+    <div class="chat-m">Our AI assistant is getting smarter! Meanwhile, reach us directly:</div>
+    <div class="chat-fb">
+      <a href="https://calendly.com/wowspiremedia/30min" target="_blank" rel="noopener">Schedule a Meeting</a>
+      <a href="https://wa.me/918013838854" target="_blank" rel="noopener">WhatsApp Us</a>
+      <a href="mailto:wowspiremedia@gmail.com">Email Us</a>
+    </div>
+  </div>
+  <div class="chat-in">
+    <input type="text" placeholder="Coming soon..." disabled>
+    <button disabled>
+      <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<button class="btt" id="btt" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- SCRIPTS -->
+<script src="js/loader.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

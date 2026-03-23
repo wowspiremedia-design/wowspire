@@ -1,0 +1,153 @@
+/* ============================================================
+   WOWSPIRE — MOBILE.CSS  — Complete Mobile Experience
+   ============================================================ */
+
+/* ── TABLET (max 1024px) ─────────────────────────────── */
+@media (max-width:1024px) {
+  nav { padding: 0 28px; }
+  .nav-links { gap: 22px; }
+  .nav-links a { font-size: 13px; }
+  .svc-grid { grid-template-columns: repeat(2,1fr); }
+  .about-grid { grid-template-columns: 1fr; gap: 52px; }
+  .about-photo-box { max-width: 380px; margin: 0 auto; }
+  .ft-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .pf-grid { grid-template-columns: repeat(2,1fr); }
+}
+
+/* ── MOBILE (max 768px) ──────────────────────────────── */
+@media (max-width:768px) {
+  /* Base */
+  body { cursor: auto; }
+  .cursor-dot,.cursor-ring,.cursor-glow { display: none !important; }
+  section { padding: 90px 0; }
+  .wrap { padding: 0 20px; }
+
+  /* Nav */
+  .nav-links, .nav-cta { display: none; }
+  .burger { display: flex; cursor: pointer; }
+  nav { height: 64px; padding: 0 20px; }
+  .nav-brand span { font-size: 15px; }
+
+  /* Hero */
+  .hero-in { padding: 0 20px; }
+  .hero-logo { width: 90px; height: 90px; margin-bottom: 24px; }
+  .hero-p { font-size: 15px; margin-bottom: 32px; }
+  .hero-cta { padding: 14px 32px; font-size: 15px; }
+  .scroll-hint { display: none; }
+
+  /* Section headers */
+  .sh { margin-bottom: 48px; }
+  .sh-title { font-size: clamp(26px, 7vw, 36px); }
+  .sh-sub { font-size: 10px; padding: 6px 16px; }
+
+  /* Marquee */
+  .mq-track { gap: 50px; animation-duration: 20s; }
+  .mq-item img { height: 50px; }
+
+  /* About */
+  .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-photo-box { max-width: 300px; margin: 0 auto; }
+  .about-photo-frame { display: none; }
+  .counters { grid-template-columns: repeat(2,1fr); gap: 12px; }
+  .counter-val { font-size: 26px; }
+  .about-bio p { font-size: 15px; }
+
+  /* Services */
+  .svc-grid { grid-template-columns: 1fr; }
+  .svc-cat { margin-bottom: 40px; }
+
+  /* Portfolio */
+  .pf-grid { grid-template-columns: 1fr; }
+
+  /* Disney */
+  .disney-hl { padding: 20px 22px; font-size: 15px; }
+
+  /* Testimonial */
+  .test-box { padding: 36px 22px; }
+  .test-quote { font-size: 15px; }
+  .test-box::before { font-size: 80px; }
+
+  /* Learn */
+  .learn-grid { grid-template-columns: 1fr; }
+
+  /* Contact */
+  .ct-btns { flex-direction: column; align-items: center; }
+  .ct-btn { width: 100%; max-width: 320px; justify-content: center; }
+
+  /* Footer */
+  .ft-grid { grid-template-columns: 1fr; gap: 32px; padding: 0 20px; }
+  .ft-bottom { padding: 20px 20px 0; }
+
+  /* Chatbot */
+  .chat-win { right: 10px; left: 10px; width: auto; bottom: 90px; }
+  .chat-trig { width: 52px; height: 52px; bottom: 20px; right: 20px; }
+  .btt { bottom: 20px; left: 20px; width: 42px; height: 42px; }
+
+  /* Cards — no 3D tilt on mobile (performance) */
+  .glass-card:hover { transform: translateY(-6px) !important; }
+
+  /* Three.js canvas — reduced on mobile for performance */
+  .bg-orb { filter: blur(70px); opacity: 0.22; }
+}
+
+/* ── SMALL MOBILE (max 480px) ────────────────────────── */
+@media (max-width:480px) {
+  nav { padding: 0 16px; }
+  .hero-logo { width: 75px; height: 75px; }
+  .hero-p { font-size: 14px; }
+  .counters { gap: 10px; }
+  .counter-box { padding: 16px 12px; }
+  .counter-val { font-size: 22px; }
+  .svc-name { font-size: 15px; }
+  .disney-hl { font-size: 14px; padding: 18px 18px; }
+  .mob-menu a { font-size: 24px; }
+  .sh-title { font-size: clamp(23px, 8vw, 32px); }
+  #marquee { padding: 40px 0; }
+  .test-box { padding: 28px 16px; }
+  .test-quote { font-size: 14px; }
+}
+
+/* ── TOUCH DEVICES — better tap targets ──────────────── */
+@media (hover:none) {
+  .glass-card { transition: transform 0.15s ease; }
+  .glass-card:active { transform: scale(0.98); }
+  .hero-cta:active { transform: scale(0.97); }
+  .ct-btn:active { transform: scale(0.97); }
+  /* Remove hover-only effects */
+  .glass-card:hover { transform: none; box-shadow: none; border-color: var(--gb); }
+  .glass-card:hover::before { opacity: 0; }
+  /* But keep expand on tap */
+  .svc-card:active, .pf-card:active, .article-card:active { transform: scale(0.98); }
+}
+
+/* ── PERFORMANCE — reduce animations on low-power ────── */
+@media (prefers-reduced-motion:reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  .mq-track { animation: none; }
+  #threeCanvas { display: none; }
+}
+
+/* ── LANDSCAPE MOBILE ────────────────────────────────── */
+@media (max-width:812px) and (orientation:landscape) {
+  #hero { min-height: auto; padding: 100px 0 60px; }
+  .hero-logo { width: 70px; height: 70px; margin-bottom: 16px; }
+  .hero-p { font-size: 14px; margin-bottom: 24px; }
+}
+
+/* ── PREVENT SCROLL DURING LOADER (mobile) ───────────── */
+@media (max-width:768px) {
+}
+@media (max-width:480px) {
+  .bg-orb--3 { display: none; } /* remove 3rd orb on smallest */
+}
+
+/* ── MOBILE 3D — Full experience, performance optimized ── */
+@media (max-width: 768px) {
+  #threeCanvas { opacity: 1; } /* Full visibility — scene.js handles shape count */
+  #stars { opacity: 0.85; }
+  .bg-orb { filter: blur(60px); opacity: 0.28; }
+}
+@media (max-width: 480px) {
+  #threeCanvas { opacity: 1; }
+  .bg-orb--3 { display: none; }
+}
