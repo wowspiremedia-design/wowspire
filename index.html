@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <title>Wowspire Media | Social Media, Branding &amp; Lead Generation</title>
   <meta name="description" content="Wowspire Media — bold digital marketing agency in Kolkata. Social media, brand building, lead generation, Meta ads, SEO, marketing automation. 13+ years. 30+ brands. 50,000+ leads.">
   <meta property="og:title" content="Wowspire Media | Social Media, Branding &amp; Lead Generation">
@@ -23,7 +23,7 @@
 window.addEventListener('pageshow', function(e) {
   if (e.persisted) { window.location.reload(); }
 });
-// Safety: remove loader if it's still showing after 6s
+// Safety: remove loader if still showing after 12s (loader.js handles normal flow)
 window.addEventListener('load', function() {
   setTimeout(function() {
     var l = document.getElementById('loader');
@@ -32,7 +32,7 @@ window.addEventListener('load', function() {
       document.body.style.overflow = '';
       document.body.classList.remove('loading');
     }
-  }, 6000);
+  }, 12000);
 });
 </script>
 </head>
@@ -43,22 +43,29 @@ window.addEventListener('load', function() {
 
 <!-- LOADER — WOWSPIRE GENESIS BRAND FILM -->
 <div id="loader">
+  <!-- Particle canvas — 2D, draws explosion and convergence -->
   <canvas id="ldCanvas"></canvas>
-  <div class="ld-center">
-    <div class="ld-dot"></div>
-    <div class="ld-logo">
-      <div class="ld-glow"></div>
-      <div class="ld-ring"></div>
-      <div class="ld-ring2"></div>
-      <img src="assets/images/wowspire-logo.png" alt="Wowspire">
-    </div>
-    <div class="ld-name"><span class="ltr">W</span><span class="ltr">O</span><span class="ltr">W</span><span class="ltr">S</span><span class="ltr">P</span><span class="ltr">I</span><span class="ltr">R</span><span class="ltr">E</span></div>
-    <div class="ld-tagline">We Create, You Wow</div>
-    <div class="ld-line"></div>
+  <!-- Logo: absolutely at exact screen center (cx,cy) -->
+  <div class="ld-logo" id="ldLogo">
+    <div class="ld-glow"></div>
+    <div class="ld-ring"></div>
+    <div class="ld-ring2"></div>
+    <img src="assets/images/wowspire-logo.png" alt="Wowspire">
   </div>
-  <div class="ld-top"></div>
-  <div class="ld-bot"></div>
-  <div class="ld-flash"></div>
+  <!-- Text: absolutely positioned below logo -->
+  <div class="ld-text" id="ldText">
+    <div class="ld-name" id="ldName">
+      <span class="ltr">W</span><span class="ltr">O</span><span class="ltr">W</span><span class="ltr">S</span><span class="ltr">P</span><span class="ltr">I</span><span class="ltr">R</span><span class="ltr">E</span>
+    </div>
+    <div class="ld-tagline" id="ldTag">
+      <span class="nltr">W</span><span class="nltr">e</span><span class="nltr"> </span><span class="nltr">C</span><span class="nltr">r</span><span class="nltr">e</span><span class="nltr">a</span><span class="nltr">t</span><span class="nltr">e</span><span class="nltr">,</span><span class="nltr"> </span><span class="nltr">Y</span><span class="nltr">o</span><span class="nltr">u</span><span class="nltr"> </span><span class="nltr">W</span><span class="nltr">o</span><span class="nltr">w</span>
+    </div>
+    <div class="ld-line" id="ldLine"></div>
+  </div>
+  <!-- Split panels for reveal -->
+  <div class="ld-top" id="ldTop"></div>
+  <div class="ld-bot" id="ldBot"></div>
+  <!-- NO ld-flash — second explosion IS the flash -->
 </div>
 
 <!-- FIXED BACKGROUND LAYERS -->
@@ -150,8 +157,18 @@ window.addEventListener('load', function() {
       <div class="about-content">
         <h3 class="about-name">Rahul Mukherjee</h3>
         <p class="about-role">Founder, Wowspire Media</p>
-        <div class="about-bio" id="aboutBio"></div>
-        <div class="counters" id="countersGrid"></div>
+        <div class="about-bio" id="aboutBio">
+  <p>With over a decade in travel, hospitality, and digital marketing, I've had the privilege of working with some of India's biggest names — MakeMyTrip, Yatra, and Goibibo — before building something of my own.</p>
+  <p>As the founder of RustickKraft, I secured funding from Facebook and built a partnership with Disney, proving that bold ideas backed by strategy can open doors most people think are closed.</p>
+  <p>I've led OTA operations at the Director level for Hahalolo, an international social travel platform, and hold an MBA from Jain University where my research focused on digital transformation in the travel industry.</p>
+  <p>But through it all, one thing became clear — most businesses don't need more marketing. They need the RIGHT marketing. That's why I built Wowspire. Every business is unique, and at Wowspire, every brand gets a strategy built just for them.</p>
+</div>
+        <div class="counters" id="countersGrid">
+  <div class="counter-box glass-card"><div class="card-spotlight"></div><div class="counter-val" data-target="13" data-sfx="+">13+</div><div class="counter-lbl">Years Experience</div></div>
+  <div class="counter-box glass-card"><div class="card-spotlight"></div><div class="counter-val" data-target="30" data-sfx="+">30+</div><div class="counter-lbl">Brands Served</div></div>
+  <div class="counter-box glass-card"><div class="card-spotlight"></div><div class="counter-val" data-target="2000" data-sfx="+">2000+</div><div class="counter-lbl">Campaigns</div></div>
+  <div class="counter-box glass-card"><div class="card-spotlight"></div><div class="counter-val" data-target="50000" data-sfx="+">50,000+</div><div class="counter-lbl">Leads Generated</div></div>
+</div>
       </div>
     </div>
   </div>
@@ -206,11 +223,37 @@ window.addEventListener('load', function() {
       <h2 class="sh-title">What Our Clients <span class="pw">Say</span></h2>
       <div class="sh-line"></div>
     </div>
-    <div class="test-box">
-      <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-      <p class="test-quote">"Working with Wowspire is a very good experience to me. Wowspire not only deliver my work but also suggest me how to execute my work in a right way. Thanks to Rahul Mukherjee and keep the good work."</p>
-      <p class="test-name">— Shreya Mukherjee</p>
-      <p class="test-role">Founder &amp; CEO, Trip-O-India</p>
+    <div class="test-grid" id="testGrid">
+
+      <div class="test-box">
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="test-quote-wrap">
+          <p class="test-quote">"Working with Wowspire is a very good experience to me. Wowspire not only deliver my work but also suggest me how to execute my work in a right way. Thanks to Rahul Mukherjee and keep the good work."</p>
+        </div>
+        <p class="test-name">— Shreya Mukherjee</p>
+        <p class="test-role">Founder &amp; CEO, Trip-O-India</p>
+      </div>
+
+      <div class="test-box">
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="test-quote-wrap">
+          <p class="test-quote">"The most innovative and promising digital marketer Bon Voyagers ever worked with."</p>
+        </div>
+        <p class="test-name">— Mr. Dibyendu Roy</p>
+        <p class="test-role">Bon Voyagers</p>
+      </div>
+
+      <div class="test-box">
+        <div class="test-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="test-quote-wrap">
+          <p class="test-quote test-short">"I am writing to formally express my appreciation for the fantastic work you have been doing on the digital promotions for Cafe House Kolkata. We have noticed a significant positive impact since you took over our digital strategy."</p>
+          <p class="test-quote test-more" style="display:none"> Your creativity, consistency, and understanding of our brand voice have been impressive. The way you are handling our social media presence and online engagement has truly captured the essence of what Cafe House stands for. Thank you for your dedication and for being a proactive partner in our growth."</p>
+          <button class="test-see-more" onclick="toggleTestMore(this)">See More</button>
+        </div>
+        <p class="test-name">— Mr. Dipankar</p>
+        <p class="test-role">Owner, Cafe House Kolkata</p>
+      </div>
+
     </div>
   </div>
 </section>

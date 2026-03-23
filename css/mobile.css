@@ -1,3 +1,8 @@
+@supports (padding: max(0px)) {
+  body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-inset-right); }
+  .chat-trig { right: max(16px, env(safe-area-inset-right)); }
+  .btt { left: max(16px, env(safe-area-inset-left)); }
+}
 /* ============================================================
    WOWSPIRE — MOBILE.CSS  — Complete Mobile Experience
    ============================================================ */
@@ -79,9 +84,33 @@
   .ft-bottom { padding: 20px 20px 0; }
 
   /* Chatbot */
-  .chat-win { right: 10px; left: 10px; width: auto; bottom: 90px; }
-  .chat-trig { width: 52px; height: 52px; bottom: 20px; right: 20px; }
-  .btt { bottom: 20px; left: 20px; width: 42px; height: 42px; }
+  /* Chat window — fully visible, close button always accessible */
+  .chat-win {
+    position: fixed;
+    left: 10px; right: 10px;
+    bottom: 84px;
+    width: auto;
+    max-height: 72vh;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .chat-hd {
+    padding: 14px 16px;
+    position: sticky; top: 0;
+  }
+  .chat-hd button {
+    font-size: 22px;
+    padding: 6px 10px;
+    min-width: 36px;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chat-bd { max-height: 42vh; overflow-y: auto; }
+  .chat-trig { width: 52px; height: 52px; bottom: 20px; right: 16px; }
+  .btt { bottom: 20px; left: 16px; width: 42px; height: 42px; }
+  .chat-win { bottom: 88px; right: 14px; left: 14px; width: auto; }
 
   /* Cards — no 3D tilt on mobile (performance) */
   .glass-card:hover { transform: translateY(-6px) !important; }
@@ -150,4 +179,10 @@
 @media (max-width: 480px) {
   #threeCanvas { opacity: 1; }
   .bg-orb--3 { display: none; }
+}
+
+/* Testimonial grid mobile */
+@media (max-width: 900px) {
+  .test-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .test-box { min-height: auto; padding: 28px 22px; }
 }

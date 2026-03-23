@@ -176,8 +176,8 @@ if(burger&&mob){
   if(!el) return;
   const txt="We Create, You Wow";
   let i=0;
-  function type(){ if(i<=txt.length){ el.textContent=txt.slice(0,i++); setTimeout(type,85); } }
-  setTimeout(type, 5000);
+  function type(){ if(i<=txt.length){ el.textContent=txt.slice(0,i++); setTimeout(type, 50); } }
+  setTimeout(type, 7000);
 })();
 
 // ── CARD EXPAND ───────────────────────────────────────────────
@@ -262,7 +262,7 @@ function animCounter(el) {
   // Word-by-word section headers
   gsap.utils.toArray('.sh').forEach(sh=>{
     const sub=sh.querySelector('.sh-sub'), title=sh.querySelector('.sh-title'), line=sh.querySelector('.sh-line');
-    const tl=gsap.timeline({scrollTrigger:{trigger:sh, start:'top 88%', once:true}});
+    const tl=gsap.timeline({scrollTrigger:{trigger:sh, start:'top 88%'}});
     if(sub) tl.from(sub,{opacity:0, y:20, duration:.5, ease:'power3.out'});
     if(title){
       title.innerHTML=title.innerHTML.replace(
@@ -277,12 +277,12 @@ function animCounter(el) {
   // About — left/right cinematic
   const ag=document.querySelector('.about-grid');
   if(ag){
-    gsap.from('.about-photo-box',{x:-80, opacity:0, duration:1.2, ease:'power3.out', scrollTrigger:{trigger:ag, start:'top 80%', once:true}});
-    gsap.from('.about-content > *',{x:60, opacity:0, stagger:.1, duration:.95, ease:'power3.out', scrollTrigger:{trigger:ag, start:'top 80%', once:true}});
+    gsap.from('.about-photo-box',{x:-80, opacity:0, duration:1.2, ease:'power3.out', scrollTrigger:{trigger:ag, start:'top 80%'}});
+    gsap.from('.about-content > *',{x:60, opacity:0, stagger:.1, duration:.95, ease:'power3.out', scrollTrigger:{trigger:ag, start:'top 80%'}});
   }
 
   // Counters
-  ScrollTrigger.create({trigger:'.counters', start:'top 80%', once:true, onEnter:()=>{
+  ScrollTrigger.create({trigger:'.counters', start:'top 80%', onEnter:()=>{
     document.querySelectorAll('.counter-val').forEach(animCounter);
     gsap.from('.counter-box',{opacity:0, y:32, scale:.88, stagger:.14, duration:.75, ease:'back.out(1.6)'});
   }});
@@ -294,7 +294,7 @@ function animCounter(el) {
       const en=parseInt(card.dataset.en||0)%ENTRANCES.length;
       const from=ENTRANCES[en];
       ScrollTrigger.create({
-        trigger:card, start:'top 88%', once:true,
+        trigger:card, start:'top 88%',
         onEnter:()=>{
           gsap.fromTo(card,
             { x:from.x, y:from.y, rotation:from.rotate, scale:from.scale, rotationY:from.rotateY||0, opacity:0 },
@@ -312,27 +312,27 @@ function animCounter(el) {
   revealCards('.disney-hl');
 
   // Disney video — dramatic scale
-  gsap.from('.disney-vid',{scale:.78, opacity:0, duration:1.5, ease:'power4.out', scrollTrigger:{trigger:'.disney-vid', start:'top 82%', once:true}});
+  gsap.from('.disney-vid',{scale:.78, opacity:0, duration:1.5, ease:'power4.out', scrollTrigger:{trigger:'.disney-vid', start:'top 82%'}});
 
   // Testimonial — scale bounce
-  gsap.from('.test-box',{opacity:0, scale:.85, rotationX:15, duration:1.1, ease:'back.out(1.5)', scrollTrigger:{trigger:'.test-box', start:'top 84%', once:true}});
+  gsap.from('.test-box',{opacity:0, scale:.85, rotationX:15, duration:1.1, ease:'back.out(1.5)', scrollTrigger:{trigger:'.test-box', start:'top 84%'}});
 
   // Contact buttons stagger from different directions
   const btns=document.querySelectorAll('.ct-btn');
   btns.forEach((b,i)=>{
     gsap.from(b,{x:i%2===0?-60:60, opacity:0, duration:.7, ease:'power3.out',
-      scrollTrigger:{trigger:b, start:'top 88%', once:true}, delay:i*.1});
+      scrollTrigger:{trigger:b, start:'top 88%'}, delay:i*.1});
   });
-  gsap.from('.ct-form > *',{y:35, opacity:0, stagger:.08, duration:.7, ease:'power3.out', scrollTrigger:{trigger:'.ct-form', start:'top 88%', once:true}});
+  gsap.from('.ct-form > *',{y:35, opacity:0, stagger:.08, duration:.7, ease:'power3.out', scrollTrigger:{trigger:'.ct-form', start:'top 88%'}});
 
   // Footer fade
-  gsap.from('.ft-grid > div',{opacity:0, y:40, stagger:.12, duration:.8, ease:'power3.out', scrollTrigger:{trigger:'.ft-grid', start:'top 90%', once:true}});
+  gsap.from('.ft-grid > div',{opacity:0, y:40, stagger:.12, duration:.8, ease:'power3.out', scrollTrigger:{trigger:'.ft-grid', start:'top 90%'}});
 
   // Marquee fade in
-  gsap.from('#marquee',{opacity:0, y:30, duration:.8, ease:'power3.out', scrollTrigger:{trigger:'#marquee', start:'top 90%', once:true}});
+  gsap.from('#marquee',{opacity:0, y:30, duration:.8, ease:'power3.out', scrollTrigger:{trigger:'#marquee', start:'top 90%'}});
 
   // Hero entrance — CRASH IN after loader completes
-  const heroTl = gsap.timeline({delay:4.6});
+  const heroTl = gsap.timeline({delay:6.1});
   heroTl
     .from('.hero-logo',    {scale:0, rotation:180, opacity:0, duration:.9, ease:'back.out(1.8)'})
     .from('.hero-h1',      {x:-80, opacity:0, duration:.7, ease:'power3.out'},'-=.4')
@@ -356,3 +356,16 @@ function animCounter(el) {
 })();
 
 // Loader is handled by loader.js (pure JS, no GSAP dependency)
+// ── TESTIMONIAL SEE MORE ──────────────────────────────────
+function toggleTestMore(btn) {
+  var wrap = btn.closest('.test-quote-wrap');
+  var more = wrap.querySelector('.test-more');
+  var short = wrap.querySelector('.test-short');
+  if (more.style.display === 'none') {
+    more.style.display = 'inline';
+    btn.textContent = 'See Less';
+  } else {
+    more.style.display = 'none';
+    btn.textContent = 'See More';
+  }
+}
