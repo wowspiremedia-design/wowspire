@@ -331,15 +331,34 @@ function animCounter(el) {
   // Marquee fade in
   gsap.from('#marquee',{opacity:0, y:30, duration:.8, ease:'power3.out', scrollTrigger:{trigger:'#marquee', start:'top 90%'}});
 
-  // Hero entrance — CRASH IN after loader completes
+  // Hero entrance — PREMIUM CRASH IN after loader completes
   const heroTl = gsap.timeline({delay:6.1});
   heroTl
-    .from('.hero-logo',    {scale:0, rotation:180, opacity:0, duration:.9, ease:'back.out(1.8)'})
-    .from('.hero-h1',      {x:-80, opacity:0, duration:.7, ease:'power3.out'},'-=.4')
-    .from('.hero-p',       {x:80,  opacity:0, duration:.6, ease:'power3.out'},'-=.5')
-    .from('.hero-cta',     {y:50, scale:.8, opacity:0, duration:.7, ease:'back.out(1.5)'},'-=.3')
-    .from('.hero-quick a', {y:30, opacity:0, stagger:.1, duration:.5, ease:'power3.out'},'-=.4')
-    .from('.scroll-hint',  {opacity:0, duration:.4},'-=.2');
+    .from('.hero-logo',    {
+      scale:0, rotation:180, opacity:0, duration:1.1,
+      ease:'back.out(1.8)',
+      transformOrigin:'50% 50%'
+    })
+    .from('.hero-h1',      {
+      x:-100, opacity:0, duration:.85,
+      ease:'power3.out',
+      skewX:8
+    },'-=.5')
+    .from('.hero-p',       {
+      x:100, opacity:0, duration:.75,
+      ease:'power3.out',
+      skewX:-8
+    },'-=.6')
+    .from('.hero-cta',     {
+      y:60, scale:.6, opacity:0, duration:.8,
+      ease:'back.out(1.6)'
+    },'-=.3')
+    .from('.hero-quick a', {
+      y:40, opacity:0, scale:.4,
+      stagger:.12, duration:.6,
+      ease:'back.out(1.5)'
+    },'-=.4')
+    .from('.scroll-hint',  {opacity:0, duration:.5},'-=.2');
 
   // Scroll-tied parallax on bg orbs
   gsap.utils.toArray('.bg-orb').forEach((orb,i)=>{

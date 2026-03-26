@@ -401,65 +401,73 @@ window.initScene = function() {
     requestAnimationFrame(animate);
     var t  = clock.getElapsedTime();
 
-    mx += (tmx - mx) * 0.04;
-    my += (tmy - my) * 0.04;
-    scrollV *= 0.86;
+    mx += (tmx - mx) * 0.06;
+    my += (tmy - my) * 0.06;
+    scrollV *= 0.82;
 
-    /* Camera gentle parallax — capped */
-    camera.position.x += (mx * 0.20 - camera.position.x) * 0.022;
-    camera.position.y += (my * 0.14 - camera.position.y) * 0.022;
+    /* Camera parallax — enhanced responsiveness */
+    camera.position.x += (mx * 0.25 - camera.position.x) * 0.028;
+    camera.position.y += (my * 0.18 - camera.position.y) * 0.028;
+    camera.position.z += Math.sin(t * 0.3) * 0.08;
     camera.lookAt(scene.position);
 
-    var sf = scrollY * 0.00055;
+    var sf = scrollY * 0.00065;
 
     shapes.forEach(function(s, idx) {
-      /* Rotate */
-      s.mesh.rotation.x += s.rx;
-      s.mesh.rotation.y += s.ry;
-      s.ph += 0.012;
+      /* Rotate with variation */
+      s.mesh.rotation.x += s.rx + Math.sin(t * 0.5 + idx) * 0.0008;
+      s.mesh.rotation.y += s.ry + Math.cos(t * 0.3 + idx) * 0.001;
+      s.ph += 0.016;
 
-      /* Repulsion spring — decay back to origin */
-      s.vx *= 0.87; s.vy *= 0.87;
+      /* Repulsion spring — faster decay */
+      s.vx *= 0.84;
+      s.vy *= 0.84;
 
-      /* Float — pure sine, origin NEVER mutates */
-      var fy  = Math.sin(s.ph * s.fS + idx * 1.1) * s.fA;
-      var fx  = Math.cos(s.ph * s.fS * 0.65 + idx * 1.6) * (s.fA * 0.25);
+      /* Float — enhanced orbital motion */
+      var fy  = Math.sin(s.ph * s.fS + idx * 1.1) * s.fA + Math.sin(t * 0.4 + idx) * (s.fA * 0.4);
+      var fx  = Math.cos(s.ph * s.fS * 0.65 + idx * 1.6) * (s.fA * 0.35) + Math.cos(t * 0.35 + idx) * (s.fA * 0.2);
 
-      /* Scroll parallax */
+      /* Scroll parallax — enhanced parallax depth */
       var depth = Math.max(Math.abs(s.mesh.position.z), 3.5);
-      var sp    = sf * (3.5 / depth);
+      var sp    = sf * (4.2 / depth);
 
-      /* Mouse parallax — hard capped */
-      var mpx = Math.max(-0.30, Math.min(0.30, mx * (0.05 / depth * 4)));
+      /* Mouse parallax — wider response */
+      var mpx = Math.max(-0.45, Math.min(0.45, mx * (0.08 / depth * 4.5)));
+      var mpy = Math.max(-0.35, Math.min(0.35, my * (0.06 / depth * 3.5)));
 
       /* Apply — vx/vy is temporary repulsion offset */
-      s.mesh.position.y = s.oy + fy - sp + s.vy * 0.15;
-      s.mesh.position.x = s.ox + fx + mpx + s.vx * 0.15;
+      s.mesh.position.y = s.oy + fy - sp + s.vy * 0.18 + mpy * 0.2;
+      s.mesh.position.x = s.ox + fx + mpx + s.vx * 0.18;
 
-      /* Chart bar pulse */
+      /* Add Z-axis floating for anti-gravity feel */
+      s.mesh.position.z = -4 + Math.sin(t * 0.25 + idx * 0.8) * 0.4 + scrollV * 0.02;
+
+      /* Chart bar pulse — enhanced */
       if (s.isChart) {
         s.mesh.children.forEach(function(bar) {
           if (bar._baseH === undefined) return;
-          var pulse = 1 + Math.sin(t * 1.8 + bar._phase) * 0.18;
+          var pulse = 1 + Math.sin(t * 2.2 + bar._phase) * 0.25 + Math.sin(t * 4.4 + bar._phase * 0.5) * 0.08;
           bar.scale.y = pulse;
           bar.position.y = (bar._baseH * pulse) / 2 - 0.45;
         });
       }
 
-      /* Radar ring counter-rotate */
+      /* Radar ring counter-rotate — faster */
       if (s.isRadar) {
         s.mesh.children.forEach(function(ring) {
-          if (ring._rotSpd) ring.rotation.z += ring._rotSpd;
+          if (ring._rotSpd) ring.rotation.z += ring._rotSpd * 1.3;
         });
       }
     });
 
-    /* Pulse lights */
-    pl1.intensity = 5.5 + Math.sin(t * 1.8) * 1.2;
-    pl2.intensity = 4.0 + Math.cos(t * 1.4) * 0.9;
-    pl3.intensity = 2.5 + Math.sin(t * 2.2) * 0.7;
-    pl1.position.x = 4  + Math.sin(t * 0.45) * 1.8;
-    pl2.position.y = -3 + Math.cos(t * 0.38) * 1.8;
+    /* Pulse lights — more dynamic */
+    pl1.intensity = 6.5 + Math.sin(t * 2.2) * 1.8;
+    pl2.intensity = 5.0 + Math.cos(t * 1.8) * 1.4;
+    pl3.intensity = 3.5 + Math.sin(t * 2.8) * 1.1;
+    pl1.position.x = 4  + Math.sin(t * 0.55) * 2.4;
+    pl1.position.y = 4  + Math.cos(t * 0.42) * 1.6;
+    pl2.position.y = -3 + Math.cos(t * 0.48) * 2.2;
+    pl2.position.z = 2  + Math.sin(t * 0.35) * 1.2;
 
     renderer.render(scene, camera);
   }
